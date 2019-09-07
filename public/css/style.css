@@ -52,7 +52,7 @@ body a:hover,body a{
 /*-- main --*/
 #form-search {
 	display: block;
-    width: 25%;
+    width: 15%;
     height: 1em;
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -63,7 +63,7 @@ body a:hover,body a{
     border: 1px solid #ced4da;
     border-radius: .25rem;
     transition: border-color .15s;
-    margin-left: 37.5%;
+    margin-left: 42.5%;
     margin-bottom: 1em;
 }
 .agileits_copyright{
@@ -157,7 +157,7 @@ input[type="submit"],a{
 	float: left;
     width: 40%;
     background: rgba(95, 252, 204, 0.69);
-    min-height: 322px;
+    min-height: 317px;
 }
 .wthree_main_grid_left_grid{
 	padding:2.8em 1.5em;
@@ -182,7 +182,7 @@ input[type="submit"],a{
     letter-spacing: 1px;
 }
 .w3l_main_grid_left_grid1_left p{
-	font-size: 2em;
+	font-size: 1.5em;
     color: #1b4e3f;
     font-weight: 600;
 }
@@ -286,7 +286,7 @@ input[type="submit"],a{
 		padding: 4em 1.5em 0;
 	}
 	.agile_main_grid_left {
-		min-height: 415px;
+		min-height: 410px;
 	}
 }
 @media (max-width: 736px){

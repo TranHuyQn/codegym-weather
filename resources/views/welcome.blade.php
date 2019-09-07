@@ -24,13 +24,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/autoSuggest.js"></script>
 <!-- //js --> 
 <link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css " />
-<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+{{-- <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet"> --}}
 </head>
 <body onload="startTime()">
     <div class="main">  
         <h1>Codegym Weather</h1>
         <div id="search">
-        <form method="get" action="{{ route('search') }}">
+        <form method="get" action="{{ route('index') }}">
         @csrf            
         <input type="text" id="form-search" name="cityName" placeholder="Nhập tỉnh thành">
         <button style="display: none;" type="submit">Xem</button>
@@ -40,12 +40,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="w3layouts_main_grid">
                 <div class="w3layouts_main_grid_left">
                     <h2>{{ "$cityName, $cityCountry" }}.</h2>
-                    <p>Mostly Rainy</p>
+                    <p>{{ $data->weather[0]->main }}</p>
                     <h3>Hiện tại</h3>
                     <h4>{{ round($data->main->temp - 273.15) }}<span>°c</span></h4>
                 </div>
                 <div class="w3layouts_main_grid_right">
-                    <canvas id="sleet" width="70" height="70"> </canvas>
+                    <canvas id="clear-day" width="70" height="70"> </canvas>
                     <div id="w3time"></div>
                     <div class="w3layouts_date_year">
                         <!-- date -->
@@ -74,8 +74,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="wthree_main_grid_left_grid">
                         <div class="w3ls_main_grid_left_grid1">
                             <div class="w3l_main_grid_left_grid1_left">
-                                <h3>Partly Sunny</h3>
-                                <p>3 <span>%</span></p>
+                                <h3>Mặt trời</h3>
+                                <p> {{ "$sunrise/$sunset" }} <span></span></p>
                             </div>
                             <div class="w3l_main_grid_left_grid1_right">
                                 <canvas id="partly-cloudy-day" width="45" height="45"></canvas>
@@ -84,8 +84,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="w3ls_main_grid_left_grid1">
                             <div class="w3l_main_grid_left_grid1_left">
-                                <h3>Độ ẩm %</h3>
-                                <p>{{ $data->main->humidity }} <span></span></p>
+                                <h3>Độ ẩm</h3>
+                                <p>{{ $data->main->humidity }} <span>%</span></p>
                             </div>
                             <div class="w3l_main_grid_left_grid1_right">
                                 <canvas id="cloudy" width="45" height="45"></canvas>
@@ -95,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="w3ls_main_grid_left_grid1">
                             <div class="w3l_main_grid_left_grid1_left">
                                 <h3>Gió Km/h</h3>
-                                <p>{{$data->wind->speed * 3.6}} <span></span></p>
+                                <p>{{$data->wind->speed * 3.6}} <span>km/h</span></p>
                             </div>
                             <div class="w3l_main_grid_left_grid1_right">
                                 <canvas id="wind" width="45" height="45"></canvas>
@@ -240,7 +240,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <script>
          var icons = new Skycons({"color": "#999999"}),
               list  = [
-                "sleet"
+                "sleet", "clear-day"
               ],
               i;
 
@@ -253,7 +253,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
              var icons = new Skycons({"color": "#f5f5f5"}),
                   list  = [
                     "clear-night", "partly-cloudy-day",
-                    "partly-cloudy-night", "cloudy", "rain", "clear-day", "snow", "wind",
+                    "partly-cloudy-night", "cloudy", "rain", "snow", "wind",
                     "fog"
                   ],
                   i;
